@@ -7,19 +7,6 @@ type Comment = { id: string; name: string; comment: string; createdAt: string }
 
 const storageKey = (slug: string) => `editable:article-comments:${slug}`
 
-function timeAgo(value?: string) {
-  if (!value) return ''
-  const then = new Date(value).getTime()
-  if (Number.isNaN(then)) return ''
-  const mins = Math.max(1, Math.floor((Date.now() - then) / 60000))
-  if (mins < 60) return `${mins} min ago`
-  const hours = Math.floor(mins / 60)
-  if (hours < 24) return `${hours} hr ago`
-  const days = Math.floor(hours / 24)
-  if (days < 30) return `${days} ${days === 1 ? 'day' : 'days'} ago`
-  return new Date(then).toLocaleDateString()
-}
-
 function initial(name: string) {
   return (name.trim()[0] || 'G').toUpperCase()
 }
@@ -45,7 +32,7 @@ export function EditableArticleComments({ slug, comments = [] }: { slug: string;
     try {
       window.localStorage.setItem(storageKey(slug), JSON.stringify(next))
     } catch {
-      /* storage unavailable — keep the in-memory list */
+      /* storage unavailable - keep the in-memory list */
     }
   }
 
@@ -70,24 +57,24 @@ export function EditableArticleComments({ slug, comments = [] }: { slug: string;
     <section className="mt-14 border-t border-[var(--tk-line)] pt-10">
       <div className="flex items-center gap-2 text-lg font-semibold">
         <MessageCircle className="h-5 w-5 text-[var(--tk-accent)]" /> Comments
-        <span className="text-[var(--tk-muted)]">({all.length})</span>
+        <span className="text-white/60">({all.length})</span>
       </div>
 
-      <form onSubmit={submit} className="mt-6 rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-5">
+      <form onSubmit={submit} className="mt-6 rounded-[var(--tk-radius)] border border-[#0d0d0d1a] bg-white p-5 text-[#0d0d0d]">
         <input
           value={name}
           onChange={(event) => setName(event.target.value)}
           placeholder="Your name (optional)"
           maxLength={60}
-          className="h-11 w-full rounded-lg border border-[var(--tk-line)] bg-[var(--tk-bg)] px-4 text-sm text-[var(--tk-text)] outline-none transition focus:border-[var(--tk-accent)]"
+          className="h-11 w-full rounded-lg border border-[#0d0d0d1a] bg-[#f2f0ed] px-4 text-sm text-[#0d0d0d] outline-none transition placeholder:text-[#0d0d0d99] focus:border-[var(--tk-accent)]"
         />
         <textarea
           value={text}
           onChange={(event) => setText(event.target.value)}
-          placeholder="Share your thoughts…"
+          placeholder="Share your thoughts..."
           rows={3}
           maxLength={1500}
-          className="mt-3 w-full resize-y rounded-lg border border-[var(--tk-line)] bg-[var(--tk-bg)] px-4 py-3 text-sm leading-6 text-[var(--tk-text)] outline-none transition focus:border-[var(--tk-accent)]"
+          className="mt-3 w-full resize-y rounded-lg border border-[#0d0d0d1a] bg-[#f2f0ed] px-4 py-3 text-sm leading-6 text-[#0d0d0d] outline-none transition placeholder:text-[#0d0d0d99] focus:border-[var(--tk-accent)]"
         />
         <div className="mt-3 flex justify-end">
           <button
@@ -102,20 +89,20 @@ export function EditableArticleComments({ slug, comments = [] }: { slug: string;
 
       <div className="mt-6 grid gap-3">
         {all.map((comment) => (
-          <div key={comment.id} className="rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-5">
+          <div key={comment.id} className="rounded-[var(--tk-radius)] border border-[#0d0d0d1a] bg-white p-5 text-[#0d0d0d]">
             <div className="flex items-center gap-3">
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--tk-accent-soft)] text-sm font-bold text-[var(--tk-accent)]">
                 {initial(comment.name)}
               </span>
               <div className="min-w-0">
-                <p className="truncate text-sm font-semibold text-[var(--tk-text)]">{comment.name || 'Guest'}</p>
-                {comment.createdAt ? <p className="text-xs text-[var(--tk-muted)]">{timeAgo(comment.createdAt)}</p> : null}
+                <p className="truncate text-sm font-semibold text-[#0d0d0d]">{comment.name || 'Guest'}</p>
+                {comment.createdAt ? <p className="text-xs text-[#0d0d0d99]">Saved comment</p> : null}
               </div>
             </div>
-            <p className="mt-3 whitespace-pre-line text-sm leading-6 text-[var(--tk-text)]">{comment.comment}</p>
+            <p className="mt-3 whitespace-pre-line text-sm leading-6 text-[#0d0d0d]">{comment.comment}</p>
           </div>
         ))}
-        {!all.length ? <p className="text-sm text-[var(--tk-muted)]">Be the first to comment.</p> : null}
+        {!all.length ? <p className="text-sm text-white/60">Be the first to comment.</p> : null}
       </div>
     </section>
   )
