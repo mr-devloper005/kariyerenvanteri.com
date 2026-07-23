@@ -58,7 +58,7 @@ export function EditableArticleDetailShell({ slug, post }: { slug: string; post:
           <div className="min-w-0">
             <Link href="/article" className={`inline-flex items-center gap-2 rounded-full border ${pal.border} px-4 py-2 text-sm font-black ${pal.panelText}`}><ChevronLeft className="h-4 w-4" /> Articles</Link>
             <p className={`${dc.type.eyebrow} mt-8 ${pal.accentText}`}>{voice.eyebrow}</p>
-            <h1 className={`mt-4 max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.07em] ${pal.panelText} sm:text-5xl lg:text-7xl`}>{post?.title || pagesContent.detailPages.article.fallbackTitle}</h1>
+            <h1 className={`mt-4 max-w-4xl text-4xl font-black leading-[1.15] tracking-[-0.07em] ${pal.panelText} sm:text-5xl lg:text-7xl`}>{post?.title || pagesContent.detailPages.article.fallbackTitle}</h1>
           </div>
           <aside className={`min-w-0 rounded-[2rem] ${pal.darkBg} p-6 text-white`}>
             <p className={`${dc.type.eyebrow} ${pal.accentSoftText}`}>Reading note</p>
