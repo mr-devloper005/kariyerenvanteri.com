@@ -12,17 +12,17 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function LoginPage() {
   return (
     <EditableSiteShell>
-      <main className="bg-[var(--slot4-panel-bg)] text-[var(--slot4-page-text)]">
-        <section className="mx-auto grid min-h-[calc(100vh-12rem)] max-w-[var(--editable-container)] items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_0.9fr] lg:px-8">
+      <main className="bg-[#0d0d0d] text-white">
+        <section className="mx-auto grid min-h-[calc(100vh-12rem)] max-w-[1120px] items-center gap-10 px-5 py-14 sm:px-6 lg:grid-cols-[1fr_0.9fr] lg:px-8">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--slot4-accent)]">{pagesContent.auth.login.badge}</p>
-            <h1 className="mt-4 max-w-xl text-4xl font-extrabold leading-[1.05] tracking-[-0.02em] sm:text-5xl">{pagesContent.auth.login.title}</h1>
-            <p className="mt-5 max-w-lg text-base leading-7 text-[var(--slot4-muted-text)]">{pagesContent.auth.login.description}</p>
+            <p className="text-xs font-medium uppercase tracking-[0.22em] text-white/55">{pagesContent.auth.login.badge}</p>
+            <h1 className="editable-display mt-5 max-w-3xl text-5xl leading-[1.15] tracking-[-0.04em] sm:text-6xl lg:text-[5.25rem]">{pagesContent.auth.login.title}</h1>
+            <p className="mt-6 max-w-lg text-base leading-7 text-white/65">{pagesContent.auth.login.description}</p>
           </div>
-          <div className="rounded-2xl border border-[var(--editable-border)] bg-[var(--slot4-surface-bg)] p-7 shadow-[0_4px_24px_rgba(0,0,0,0.08)] sm:p-9">
-            <h2 className="text-2xl font-bold tracking-[-0.01em]">{pagesContent.auth.login.formTitle}</h2>
+          <div className="rounded-[2rem] bg-white p-7 text-[#0d0d0d] sm:p-9">
+            <h2 className="editable-display text-5xl leading-[1.15] tracking-[-0.04em]">{pagesContent.auth.login.formTitle}</h2>
             <EditableLocalLoginForm />
-            <p className="mt-6 text-sm text-[var(--slot4-muted-text)]">New here? <Link href="/signup" className="font-semibold text-[var(--slot4-accent)] underline-offset-4 hover:underline">{pagesContent.auth.login.createCta}</Link></p>
+            <p className="mt-6 text-sm text-[#0d0d0d99]">New here? <Link href="/signup" className="font-medium text-[#cc1c4b] underline-offset-4 hover:underline">{pagesContent.auth.login.createCta}</Link></p>
           </div>
         </section>
       </main>

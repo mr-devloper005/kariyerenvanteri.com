@@ -7,22 +7,22 @@ import type { AdSkin } from '@/lib/ads/ad-frame'
 
 // Site-wide default skin — tune to your brand.
 export const adSkin: AdSkin = {
-  radius: '16px',
-  border: '1px solid rgba(0,0,0,0.06)',
-  shadow: '0 8px 30px rgba(0,0,0,0.06)',
-  background: '#ffffff',
-  labelClassName: 'bg-[#FF6600] text-white',
+  radius: '24px',
+  border: '1px solid rgba(250,250,250,0.15)',
+  shadow: 'none',
+  background: '#0d0d0d',
+  labelClassName: 'bg-[#c6a6ff] text-[#0d0d0d]',
 }
 
 // Optional per-slot overrides — adjust only where you need to.
 export const adSkinBySlot: Partial<Record<string, AdSkin>> = {
-  sidebar: { radius: '12px', shadow: 'none', border: '1px solid rgba(0,0,0,0.08)' },
+  sidebar: { radius: '24px', shadow: 'none', border: '1px solid rgba(250,250,250,0.15)', background: '#171717' },
   popup: { radius: '24px' },
-  header: { radius: '20px', background: '#FFF9F2' },
-  rail: { radius: '14px' },
-  feature: { radius: '18px' },
+  header: { radius: '24px', background: '#fafafa', border: '1px solid rgba(13,13,13,0.1)' },
+  rail: { radius: '24px' },
+  feature: { radius: '32px' },
   interstitial: { radius: '20px', shadow: '0 20px 60px rgba(0,0,0,0.5)' },
-  anchor: { radius: '12px', shadow: '0 6px 24px rgba(0,0,0,0.18)' },
+  anchor: { radius: '24px', shadow: '0 6px 24px rgba(0,0,0,0.18)' },
 }
 
 /** Merge site default + per-slot override for a slot. */
